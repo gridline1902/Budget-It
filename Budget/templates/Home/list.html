@@ -1,0 +1,33 @@
+{% extends "home/header.html" %}
+
+{% block title %} View List {% endblock %}
+
+{% block content %}
+    <h1>{{ls.name}}</h1>
+
+    <form method="post" action="#">
+        {% csrf_token %}
+        
+        <ul>
+            {% for item in ls.item_set.all %}
+    
+                {% if item.complete == True %}
+    
+                    <li>{{item.text}} <input type="checkbox" value="clicked" name="c{{item.id}}" checked></li>
+    
+                {% else %}
+    
+                    <li>{{item.text}} <input type="checkbox" value="clicked" name="c{{item.id}}"></li>
+    
+                {% endif %}              
+    
+            {% endfor%}
+    
+        </ul>
+        <button type="submit", name="save", value="save">Save</button>
+        <input type="text" name="new">
+        <button type="submit", name="newItem", value="newItem">Add Item</button>
+
+    </form>
+
+{% endblock %}

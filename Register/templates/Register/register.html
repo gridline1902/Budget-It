@@ -1,0 +1,20 @@
+{% extends "Home/header.html" %}
+
+{% block title %}
+
+Create an Account
+
+{% endblock %}
+
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+
+    {{form.as_p}}
+    <button type="submit">Register</button>
+    
+</form>
+
+{% endblock %}
