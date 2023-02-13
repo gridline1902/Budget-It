@@ -16,6 +16,8 @@ Including another URLconf
 from django.urls import path
 from . import views
 
+app_name = "Budget"
+
 urlpatterns = [
     path("<int:id>", views.index, name="index"),
     path("", views.landing_page, name="landing_page"),

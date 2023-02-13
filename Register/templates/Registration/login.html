@@ -1,18 +1,27 @@
 {% extends "Home/header.html" %}
+{% load static %}
 
-{% block title %}
-Login
-{% endblock %}
+
+{% block title %}Login{% endblock %}
 
 
 {% block content %}
-<form method="post">
-
-    {% csrf_token %}
-
-    {{form.as_p}}
-    <p>Don't have an account? Create One <a href="/register">here</a></p>
-    <button type="submit">Login</button>
-
-</form>
+<body style="color: white; background-color: black">
+    <div class="login-page">
+        <div class="form">
+            <form method="post">
+                {% csrf_token %}
+                <h3 class="login-title">LOGIN</h3>
+                <div class="input-group mb-3">
+                    <input type="text" name="username" placeholder="Username..." class="form-control">
+                </div>
+                <div class="input-group mb-2">
+                    <input type="password" name="password" placeholder="Password..." class="form-control">
+                </div>
+                <button type="submit"> Submit</button>
+                <p class="message">Don't have an account? <a href="/register"><strong>Register</strong></a> here.</p>
+            </form>
+        </div>
+    </div>
+</body>
 {% endblock %}

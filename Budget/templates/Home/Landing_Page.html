@@ -1,11 +1,30 @@
 {% extends "home/header.html" %}
-
+{% load static %}
 
 {% block title %} Home {% endblock %}
 
 
 {% block content %}
 
-<div style="position: absolute; width: 390px; height: 96px; left: 329px; top: 106px; font-family: 'JejuMyeongjo'; font-style: normal; font-weight: 400; font-size: 96px; line-height: 96px; color: #FFFFFF;">BUDGET</div>
+{% if messages %}
+<div style="display: flex; float: left">
+    <ul class="messages-swipe" style="color: white;">
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %} style="color: white;"">{{ message }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+
+<div class="budget-text">BUDGET</div>
+<div>
+    <img class="bg-img" src="{% static 'design/images/mobile2.jpg' %}"/>
+</div>
+<div class="it-text">IT</div>
+<div class="slogan-text">
+    Budget your monthly allowance, income and side hustle with our analytic system using the 50/30/20 rule
+</div>
+
     
 {% endblock %}

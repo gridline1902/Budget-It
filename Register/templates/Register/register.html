@@ -1,20 +1,31 @@
 {% extends "Home/header.html" %}
+{% load static %}
 
-{% block title %}
-
-Create an Account
-
-{% endblock %}
+{% block title %}Create an Account{% endblock %}
 
 
 {% block content %}
 
-<form method="post">
-    {% csrf_token %}
-
-    {{form.as_p}}
-    <button type="submit">Register</button>
-    
-</form>
+<div class="login-page">
+    <div class="form">
+        <form method="post">
+            {% csrf_token %}
+            <h3 class="login-title">REGISTER</h3>
+            <div class="input-group mb-3">
+                <input type="text" name="username" placeholder="Username..." class="form-control">
+            </div>
+            <div class="input-group mb-2">
+                <input type="password" name="password1" placeholder="Password..." class="form-control">
+            </div>
+            <div class="input-group mb-2">
+                <input type="password" name="password2" placeholder="Password Confirmation..." class="form-control">
+            </div>
+            <div class="input-group mb-2">
+                <input type="email" name="email" placeholder="Email..." class="form-control">
+            </div>
+            <button type="submit"> Submit</button>
+            <p class="message">Already have an account? <a href="/login"><strong>Login</strong></a> here.</p>
+        </form>
+    </div>
 
 {% endblock %}
