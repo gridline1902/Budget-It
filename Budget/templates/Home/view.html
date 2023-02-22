@@ -1,16 +1,27 @@
 {% extends "home/header.html" %}
 
-
 {% block title %} View {% endblock %}
-
 
 {% block content %}
 
     {% for td in user.todolist.all %}
-
-        <p><a href="/{{td.id}}">{{td.name}}</a></p>
+    
+    <div class="card" style="width: 18rem; margin-top: 20px; margin-left: 40px;">
+        <div class="card-body">
+          <h5 class="card-title">
+            <p>
+              {{td.name}}
+            </p>
+          </h5>
+          <p class="card-text">Check out your budget calculations for this month...</p>
+          <form class="d-flex" method="post" action="{% url 'Budget:delete_todo_list' td.name %}">
+            {% csrf_token %}
+            <a href="/{{td.name}}" class="btn btn-primary" style="background: grey; border: none;">Go</a>
+            <input style="margin: auto;" class="btn btn-danger" type="submit" value="Delete">
+          </form>
+        </div>
+    </div>
 
     {% endfor %}
 
-    
 {% endblock %}

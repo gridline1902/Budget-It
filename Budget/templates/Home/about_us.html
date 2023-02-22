@@ -1,0 +1,26 @@
+{% extends "home/header.html" %}
+{% load static %}
+
+{% block title %} About Us {% endblock %}
+
+
+{% block content %}
+
+<div style="font-size: 16px; font-family: 'Quicksand', sans-serif; display: flex; align-items: center; color: #FFFFFF;">
+    <img src="{% static 'design/images/about-us-bg2.jpg' %}" alt="about-us-image" style="padding: 10px; height: 58%; width: 50%; margin-left: 20px; margin-right: 20px;">
+    <div>
+        <p style="position: fixed; margin-top: -160px; max-width: 45%">
+            <b style="font-size: 40px;">Welcome to our website!</b><br/>
+            <small style="font-size: 11px;">We're here to help you stay on top of your finances and achieve your financial goals.</small><br/><br/>
+            Our website calculates your monthly budget using the 50/30/20 rule, a popular and effective method for managing your money. With this rule, you allocate 50% of your income to your needs (such as rent, groceries, and bills), 30% to your wants (such as dining out and entertainment), and 20% to your savings or debt payments. This balanced approach ensures that you have enough for your essentials, while still allowing you to enjoy your life and build your wealth.<br/><br/>
+            Our calculator makes it easy to see how much you should be allocating to each category based on your income. You simply enter your total amount, and we'll show you the breakdown of your needs, wants, and savings.
+            But that's not all! We also store your calculations so that you can come back and review them at any time. You can see how your budget has evolved over time, and adjust your spending accordingly.
+            Our goal is to help you make smarter financial decisions and achieve your long-term goals. We believe that everyone can benefit from good money management, and we're here to make it easy and accessible for you. Thank you for using our website, and we hope you enjoy our service!
+        </p>
+    </div>
+</div>
+
+<img src="{% static 'design/images/about-us-bg4.jpg' %}" alt="about-us-image" style="padding: 10px; height: 58%; width: 50%; margin-left: 20px; margin-right: 20px;">
+
+  
+{% endblock %}

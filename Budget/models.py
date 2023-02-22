@@ -12,8 +12,10 @@ class ToDoList(models.Model):
 
 class Item(models.Model):
     todolist = models.ForeignKey(ToDoList, on_delete=models.CASCADE)
-    text = models.CharField(max_length=200)
-    complete = models.BooleanField()
+    amount = models.FloatField(blank=True, null=True)
+    needs = models.FloatField(blank=True, null=True)
+    wants = models.FloatField(blank=True, null=True)
+    savings = models.FloatField(blank=True, null=True)
     
     def __str__(self):
-        return self.text
+        return f"{self.amount} {self.needs} {self.wants} {self.savings}"

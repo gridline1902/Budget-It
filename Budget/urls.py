@@ -19,8 +19,11 @@ from . import views
 app_name = "Budget"
 
 urlpatterns = [
-    path("<int:id>", views.index, name="index"),
+    path("<str:name>", views.index, name="index"),
     path("", views.landing_page, name="landing_page"),
     path("create/", views.create, name="create"),
     path("view/", views.view, name="view"),
+    path("about/", views.about, name="about"),
+    path("services/", views.services, name="services"),
+    path('delete/<str:name>/', views.delete_todo_list, name='delete_todo_list'),
 ]

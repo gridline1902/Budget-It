@@ -1,50 +1,50 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from .models import ToDoList, Item
 from .forms import CreateNewList
 
 # Create your views here.
 
-def index(request, id):
-    # get the object based on the id
-    ls = ToDoList.objects.get(id=id)   
-    # checks if ToDoList objects exists for specific user
-    if ls in request.user.todolist.all():
-        # {"save": ["save"], "c1":["clicked"]}
-        # ......if we click the save button in the form, the name of button points to the value of button
-        if request.method == 'POST':
-            print(request.POST)
-        # handles the request if "save" button is clicked
-            if request.POST.get("save"):
-        # loops through all the items in the ToDoList
-                for item in ls.item_set.all():
-        # handles the request if "checked" button is clicked
-                    if request.POST.get("c" + str(item.id)) == "clicked":
-        # sets the status of the item_checkbox to "checked"
-                        item.complete = True
-                    else:
-        # sets the status of the item_checkbox to "unchecked"
-                        item.complete = False
-        # saves the item object
-                    item.save()
-        # this elif statement handles the request if "add new item" button is clicked
-            elif request.POST.get("newItem"):
-        # we then get the text from input field with name "new"
-                txt = request.POST.get("new")
-        # perform validation of the txt object
-                if len(txt) > 2:
-        # we then create a new item object and save it
-                    ls.item_set.create(text=txt, complete=False)
-                else:
-                    print("Please enter more than 2 characters")
-        return render(request, "Home/list.html", {"ls": ls})
-    # item = ls.item_set.get(id=1)
-    return render(request, "Home/view.html", {})
-    # return HttpResponse("<h1>%s</h1><br></br><p>%s</p>" %(ls.name, str(item.text)))
-
 
 def landing_page(request):
     return render(request, "Home/Landing_Page.html", {})
+
+
+def index(request, name):
+    # get the object based on the id
+    ls = ToDoList.objects.get(name=name)   
+    # checks if ToDoList objects exists for specific user
+    if ls in request.user.todolist.all():
+        if request.method == "POST":
+            if request.POST.get("calculate"):
+                amount = request.POST.get("amount")
+                try:
+                    # create a new item and calculate needs, wants, and savings
+                    item = ls.item_set.create(amount=float(amount))
+                    needs = float(amount) * 0.5
+                    wants = float(amount) * 0.3
+                    savings = float(amount) * 0.2
+                    item.needs = needs
+                    item.wants = wants
+                    item.savings = savings
+                    item.save()
+                except ValueError:
+                    print("Please enter a valid amount")
+            # check if the delete button was pressed
+            elif "item_id" in request.POST:
+                item_id = request.POST.get("item_id")
+                try:
+                    # get the item and delete it
+                    item = ls.item_set.get(id=item_id)
+                    item.delete()
+                except Item.DoesNotExist:
+                    print("Item does not exist")
+            else:
+                print("Not Clicked")      
+        # render the list.html template with the to-do list object
+        return render(request, "Home/list.html", {"ls": ls})
+    # render the view.html template if the to-do list object doesn't exist
+    return render(request, "Home/view.html", {})
 
 
 def create(request):
@@ -63,7 +63,7 @@ def create(request):
     # for saving a ToDoList to the specific user now
             request.user.todolist.add(t)
             
-        return HttpResponseRedirect("/%i" %t.id)
+        return HttpResponseRedirect("/%s" %t.name)
 
     else:
     # creates an instance of the form
@@ -72,4 +72,35 @@ def create(request):
 
 
 def view(request):
-    return render(request, "Home/view.html", {})
+    if request.user.is_authenticated:
+        # Get all to-do lists for the current user
+        todolists = request.user.todolist.all()
+        if not todolists:
+            # If the user has no to-do lists, redirect to the home page
+            return redirect("/create/")
+        else:
+            # Render the view template with the to-do lists
+            return render(request, "Home/view.html", {})
+    else:
+        # If the user is not authenticated, redirect to the login page
+        return redirect("/login/")
+
+def about(request):
+    return render(request, "Home/about_us.html", {})
+
+def services(request):
+    return render(request, "Home/services.html", {})
+
+def delete_todo_list(request, name):
+    # Get the to-do list object based on the name
+    todo_list = ToDoList.objects.get(name=name)
+
+    # Check if the user has permission to delete this to-do list
+    if todo_list in request.user.todolist.all():
+        # Delete the to-do list object
+        todo_list.delete()
+        # Redirect the user to the view page
+        return redirect("/view/")
+    else:
+        # Return an error message
+        return HttpResponse("You do not have permission to delete this to-do list.")

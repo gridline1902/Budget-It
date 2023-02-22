@@ -1,22 +1,30 @@
-{% extends "home/header.html" %}
+{% extends "Home/header.html" %}
 
 
-{% block title %} View List {% endblock %}
+{% block title %} Create List {% endblock %}
 
 
 {% block content %}
 
- Create Page
+<form method="post" action="/create/" style="color: white; font-family: 'Quicksand', sans-serif;">
 
- <form method="post" action="/create/">
+   {% csrf_token %}
 
-    {% csrf_token %}
+   <div style="display: flex; justify-content: center;">
+      <h1 style="color: white; margin-bottom: 20px;">Create List</h1>
+   </div>
 
-    {{ form.as_p }}
+   <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+      <div>
+         {{ form }}
+      </div>
+      <button class="btn btn-primary" style="background: grey; border: none; margin-left: 10px;" type="submit", name="save">Create New</button>
+   </div>
 
-    <button type="submit", name="save">Create New</button>
-    
- </form>
+   <div style="display: flex; justify-content: center;">
+      <p>Please <a href="{% url 'Budget:view' %}" style="text-decoration: none;"> click here </a> to access your past calculations...</p>
+   </div>
 
+</form>
     
 {% endblock %}

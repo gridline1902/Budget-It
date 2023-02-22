@@ -14,6 +14,11 @@
         {% endfor %}
     </ul>
 </div>
+<script>
+    setTimeout(function() {
+        document.querySelector('.messages-swipe').style.display = 'none';
+    }, 5000);
+</script>
 {% endif %}
 
 
@@ -22,7 +27,7 @@
     <img class="bg-img" src="{% static 'design/images/mobile2.jpg' %}"/>
 </div>
 <div class="it-text">IT</div>
-<div class="slogan-text">
+<div class="slogan-text" style="font-family: 'Quicksand', sans-serif;">
     Budget your monthly allowance, income and side hustle with our analytic system using the 50/30/20 rule
 </div>
 

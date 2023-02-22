@@ -1,5 +1,4 @@
 /* LANDING PAGE START */
-
 .budget-text {
     position: absolute;
     width: 390px; 
@@ -26,16 +25,16 @@
 
 .it-text {
     position: absolute;
-width: 99px;
-height: 96px;
-left: 765px;
-top: 385px;
-font-family: 'JejuMyeongjo';
-font-style: normal;
-font-weight: 400;
-font-size: 96px;
-line-height: 96px;
-color: #FFFFFF;
+    width: 99px;
+    height: 96px;
+    left: 765px;
+    top: 385px;
+    font-family: 'JejuMyeongjo';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 96px;
+    line-height: 96px;
+    color: #FFFFFF;
 }
 
 .slogan-text {
@@ -44,7 +43,7 @@ color: #FFFFFF;
     height: 20px;
     left: 280px;
     top: 490px;
-    font-family: 'Inder';
+    /* font-family: 'Inder'; */
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -138,3 +137,10 @@ color: #FFFFFF;
 }
 
 /* LOGIN PAGE END */
+
+/* ABOUT US PAGE START */
+
+
+
+
+/* ABOUT US PAGE END */

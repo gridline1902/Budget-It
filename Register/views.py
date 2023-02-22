@@ -62,8 +62,8 @@ def login_request(request):
             else:
                 messages.error(request, "Invalid Username or Password")
         # else if user doesn't exist don't authenticate
-        else:
-            messages.error(request, "Invalid Username or Password")
+        # else:
+        #     messages.error(request, "Invalid Username or Password")
     # saves AuthenticationForm to object
     form = AuthenticationForm()
     # return template view
