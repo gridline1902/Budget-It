@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from .models import ToDoList, Item
 from .forms import CreateNewList
+from django.contrib import messages
+
 
 # Create your views here.
 
@@ -77,6 +79,7 @@ def view(request):
         todolists = request.user.todolist.all()
         if not todolists:
             # If the user has no to-do lists, redirect to the home page
+            messages.info(request=request, message=f"You have no to-do lists. Please create one.")
             return redirect("/create/")
         else:
             # Render the view template with the to-do lists

@@ -10,13 +10,7 @@
         <link rel="stylesheet" href="{% static 'design/css/custom.css' %}" />
     </head>
     <body style="background-color: #000000;">
-
         {% include "Home/includes/Navbar.html" %}
-        {% comment %} <div class="sidenav">
-            <a href="/">Home</a>
-            <a href="/create">Create</a>
-            <a href="/view">View</a>
-        </div> {% endcomment %}
         <div>
             {% block content %}
             {% endblock %}   

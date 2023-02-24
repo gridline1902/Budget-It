@@ -1,8 +1,9 @@
-{% extends "home/header.html" %}
+{% extends "Home/header.html" %}
 
 {% block title %} View {% endblock %}
 
 {% block content %}
+{% load static %}
 
     {% for td in user.todolist.all %}
     

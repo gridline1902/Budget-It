@@ -5,6 +5,22 @@
 
 
 {% block content %}
+{% load static %}
+
+{% if messages %}
+<div style="display: block;">
+    <ul class="messages-swipe" style="color: white;">
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %} style="color: white;"">{{ message }}</li>
+        {% endfor %}
+    </ul>
+</div>
+<script>
+    setTimeout(function() {
+        document.querySelector('.messages-swipe').style.display = 'none';
+    }, 5000);
+</script>
+{% endif %}
 
 <form method="post" action="/create/" style="color: white; font-family: 'Quicksand', sans-serif;">
 

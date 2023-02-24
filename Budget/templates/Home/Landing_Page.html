@@ -1,10 +1,10 @@
-{% extends "home/header.html" %}
-{% load static %}
+{% extends "Home/header.html" %}
 
 {% block title %} Home {% endblock %}
 
 
 {% block content %}
+{% load static %}
 
 {% if messages %}
 <div style="display: flex; float: left">
@@ -22,12 +22,12 @@
 {% endif %}
 
 
-<div class="budget-text">BUDGET</div>
+<div>BUDGET</div>
 <div>
     <img class="bg-img" src="{% static 'design/images/mobile2.jpg' %}"/>
 </div>
-<div class="it-text">IT</div>
-<div class="slogan-text" style="font-family: 'Quicksand', sans-serif;">
+<div>IT</div>
+<div style="font-family: 'Quicksand', sans-serif;">
     Budget your monthly allowance, income and side hustle with our analytic system using the 50/30/20 rule
 </div>
 
