@@ -7,8 +7,8 @@
 {% load static %}
 
 {% if messages %}
-<div style="display: flex; float: left">
-    <ul class="messages-swipe" style="color: white;">
+<div style="display: flex; float: left; padding-top: 20px;">
+    <ul class="messages-swipe" style="color: #EBEBF0;">
         {% for message in messages %}
             <li {% if message.tags %} class="{{ message.tags }}" {% endif %} style="color: white;"">{{ message }}</li>
         {% endfor %}
@@ -20,16 +20,18 @@
     }, 5000);
 </script>
 {% endif %}
+<div class="body-center">
+    <div class="budget-text">BUDGET</div>
+    <div>
+        <img class="bg-img" src="{% static 'design/images/mobile2.jpg' %}"/>
+    </div>
+    <div class="it-text">IT</div>
+    <div class="slogan-container">
+        <div class="slogan-text" style="font-family: 'Quicksand', sans-serif;">
+          Budget your monthly allowance, income and side hustle with our analytic system using the 50/30/20 rule
+        </div>
+    </div>
 
-
-<div>BUDGET</div>
-<div>
-    <img class="bg-img" src="{% static 'design/images/mobile2.jpg' %}"/>
 </div>
-<div>IT</div>
-<div style="font-family: 'Quicksand', sans-serif;">
-    Budget your monthly allowance, income and side hustle with our analytic system using the 50/30/20 rule
-</div>
-
     
 {% endblock %}

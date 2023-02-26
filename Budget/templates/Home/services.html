@@ -6,18 +6,18 @@
 {% block content %}
 {% load static %}
 
-<div style="font-size: 16px; font-family: 'Quicksand', sans-serif; display: flex; align-items: center; color: #FFFFFF;">
-    <img src="{% static 'design/images/mobile1.jpg' %}" alt="about-us-image" style="padding: 10px; height: 58%; width: 50%; margin-left: 20px; margin-right: 20px;">
+<div class="services-container">
+    <img class="services-img" src="{% static 'design/images/mobile1.jpg' %}" alt="about-us-image">
     <div>
         <p>
-            <b style="font-size: 40px;">Our Services</b><br/>
+            <b class="services-heading">Our Services</b><br/>
             <small style="font-size: 11px;">We provide the following features:</small><br/><br/>
-            <ul>
-                <li>Ability to create multiple budgets: Users can create budgets for different months or categories, and access them anytime.</li>
-                <li>Automated calculation of the 50/30/20 rule: The website does the calculation automatically and displays the results in real-time.</li>
-                <li>Visualization of budget breakdown: The website displays a graphical representation of how the budget is divided into needs, wants, and savings.</li>
-                <li>Reminder notifications: Users can set reminders for important dates such as when bills are due or when savings goals should be met.</li>
-                <li>Currency options: Users can choose the currency in which they want their budget to be displayed.</li>
+            <ul class="services-list">
+                <li>Ability to create multiple budgets: Users can create budgets for different months or categories, and access them anytime.</li><br/>
+                <li>Automated calculation of the 50/30/20 rule: The website does the calculation automatically and displays the results in real-time.</li><br/>
+                <li>Visualization of budget breakdown: The website displays a graphical representation of how the budget is divided into needs, wants, and savings.</li><br/>
+                <li>Reminder notifications: Users can set reminders for important dates such as when bills are due or when savings goals should be met.</li><br/>
+                <li>Currency options: Users can choose the currency in which they want their budget to be displayed.</li><br/>
                 <li>User account: Users can create an account and access their budgets from any device, as long as they are logged in.</li>
             </ul>
         </p>

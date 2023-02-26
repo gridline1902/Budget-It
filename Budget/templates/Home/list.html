@@ -1,9 +1,11 @@
 {% extends "Home/header.html" %}
 
+{% block title %} View Calculations {% endblock %}
+
 {% block content %}
 {% load static %}
 
-<form method="post" action="#" style="font-family: 'Quicksand', sans-serif; color: white; margin-top: 20px; margin-left: 40px;">
+<form class="list-form-container" method="post" action="#">
     
     {% csrf_token %}
 
@@ -13,7 +15,7 @@
 
     <ul>
         {% for item in ls.item_set.all %}
-            <li>
+            <li class="list-calculations">
                 <p>Amount: ${{ item.amount }} | Needs: ${{ item.needs }} | Wants: ${{ item.wants }} | Savings: ${{ item.savings }}
                     <button type="submit" class="btn btn-danger" name="item_id" value="{{ item.id }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-x" viewBox="0 0 16 16">
@@ -27,7 +29,12 @@
         {% endfor %}
     </ul>
     
+    <div class="list-cta-btns">
+        <input type="submit" name="calculate" value="Calculate" class="btn btn-primary calculate-btn"/>
+        <button class="btn btn-danger go-bck-btn">
+            <a href="{% url 'Budget:view' %}">Go Back</a>
+        </button>
+    </div>
 
-    <input type="submit" name="calculate" value="Calculate" class="btn btn-primary" style="background: grey; border: none;"/>
 </form>
 {% endblock %}

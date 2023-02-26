@@ -1,13 +1,13 @@
 {% extends "Home/header.html" %}
 
-{% block title %} View {% endblock %}
+{% block title %} View Lists {% endblock %}
 
 {% block content %}
 {% load static %}
 
     {% for td in user.todolist.all %}
     
-    <div class="card" style="width: 18rem; margin-top: 20px; margin-left: 40px;">
+    <div class="center card">
         <div class="card-body">
           <h5 class="card-title">
             <p>
@@ -17,7 +17,7 @@
           <p class="card-text">Check out your budget calculations for this month...</p>
           <form class="d-flex" method="post" action="{% url 'Budget:delete_todo_list' td.name %}">
             {% csrf_token %}
-            <a href="/{{td.name}}" class="btn btn-primary" style="background: grey; border: none;">Go</a>
+            <a href="/{{td.name}}" class="btn btn-primary" style="color: #EBEBF0; background: grey; border: none;">Go</a>
             <input style="margin: auto;" class="btn btn-danger" type="submit" value="Delete">
           </form>
         </div>
