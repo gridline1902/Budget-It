@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'web-production-3d31a.up.railway.app']
 
 CSRF_COOKIE_SECURE = True
 
-CSRF_TRUSTED_ORIGINS = ['web-production-3d31a.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://web-production-3d31a.up.railway.app']
 
 
 
